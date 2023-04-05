@@ -12,9 +12,17 @@ export default class Parser{
     
     isInt(value){
         let tryInt = parseInt(value);
-        if(!isNaN(tryInt)){return value = tryInt} else {return value};
+        if(!isNaN(tryInt)){
+            return tryInt
+        } else {
+            return value
+            };
     }
     isMissingValue(value){
-        if(value === "" || value === undefined) {return value = true} else {return value};
+        if(value === "" || value === undefined){
+            return true
+        } else {
+            return value
+        };
     }
 }

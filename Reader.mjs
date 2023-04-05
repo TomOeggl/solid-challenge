@@ -4,7 +4,9 @@ export default class Reader {
   }
 
   formatInputBlock(){
-      if(this.isArray()) this.transformToString();
+      if(this.isArray()){
+        this.transformToString();
+      }
       this.splitStringAtDashes();
       this.splitSubstringAtSpaces();
       return this.cache[0];

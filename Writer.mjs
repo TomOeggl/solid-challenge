@@ -4,7 +4,7 @@ export default class Writer{
         input.forEach(pair => {
             jsonObject[pair[0]] = pair[1];      
         });
-      
+       
         return jsonObject;
     }
 
