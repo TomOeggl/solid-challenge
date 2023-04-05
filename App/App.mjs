@@ -1,4 +1,3 @@
-
 export default class App{
         constructor(input, reader, parser, writer){
             this.cache = [input];
@@ -13,6 +12,7 @@ export default class App{
             this.cache.unshift(this.parser.checkForMissingValues(this.cache[0]));
             this.cache.unshift(this.writer.writePairsToObject(this.cache[0]));
             this.result = this.cache[0];
+            
             return this.result;
         }
 

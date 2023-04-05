@@ -1,7 +1,7 @@
-import App from "./App.mjs";
-import Reader from "./Reader.mjs";
-import Parser from "./Parser.mjs";
-import Writer from "./Writer.mjs";
+import App from "./App/App.mjs";
+import Reader from "./App/Reader.mjs";
+import Parser from "./App/Parser.mjs";
+import Writer from "./App/Writer.mjs";
 
 let reader = new Reader();
 let parser = new Parser();
