@@ -1,40 +1,39 @@
 export default class Reader {
   constructor(input){
-   this.input = input;
+    this.cache = [input];
   }
 
-  processInput(){
-      let data = this.input;
-      console.log(this.input);
-      if (this.isArray()){
-          this.input = this.transformToString(this.input);
-      }
-      let splitString = this.splitStringAtDashes();
-      return this.splitSubstringAtSpaces(splitString);
-  }
-  splitStringAtDashes() {
-    console.log("really  "+this.input);
-    let splitInput = this.input.split("--");
-    splitInput.spli("--");
-    splitInput.shift();
-    this.input = splitInput;
-  }
-  splitSubstringAtSpaces(input) {
-    let noSpaceSplitInput = [];
-    
-    for (let i = 0; i < this.input.length; i++) {
-      noSpaceSplitInput.push(this.input[i].split(" ", 2));
-    }
-    this.input = noSpaceSplitInput;
+  formatInputBlock(){
+      if(this.isArray()) this.transformToString();
+      this.splitStringAtDashes();
+      this.splitSubstringAtSpaces();
+      return this.cache[0];
   }
 
   isArray() {
-    return Array.isArray(this.input);
+    return Array.isArray(this.cache[0]);
   }
   
   transformToString() {
-    let result = this.input.join(" ");
-    this.input = result;
+    let string = this.cache[0].join(" ");
+    this.cache.unshift(string);
+  }
+  
+  splitStringAtDashes() {
+    let splitInput = this.cache[0].split("--");
+    splitInput.shift();
+    this.cache.unshift(splitInput);
+  }
+  
+  splitSubstringAtSpaces() {
+    let noSpaceSplitInput = [];
+    for (let i = 0; i < this.cache[0].length; i++) {
+      let key = this.cache[0][i].split(" ").splice(0,1);
+      let value = this.cache[0][i].split(" ").splice(1).join(" ");
+      let keyValuePair = [key, value];
+      noSpaceSplitInput.push(keyValuePair);
+    }
+    this.cache.unshift(noSpaceSplitInput);
   }
 
 }
