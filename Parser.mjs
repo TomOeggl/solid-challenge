@@ -3,13 +3,18 @@ export default class Parser{
     checkForMissingValues(input){
         let ensuredPairArray = [];
         input.forEach(pair => {
-            if(pair[1] === "") pair[1] = true; 
-            if(pair[1] === undefined) pair[1] = true; 
-            let tryInt = parseInt(pair[1]);
-            if(!isNaN(tryInt)){pair[1] = tryInt};
+            pair[1] = this.isMissingValue(pair[1]);
+            pair[1] = this.isInt(pair[1]);
             ensuredPairArray.push(pair);
         });
         return ensuredPairArray;
     }
     
+    isInt(value){
+        let tryInt = parseInt(value);
+        if(!isNaN(tryInt)){return value = tryInt} else {return value};
+    }
+    isMissingValue(value){
+        if(value === "" || value === undefined) {return value = true} else {return value};
+    }
 }
