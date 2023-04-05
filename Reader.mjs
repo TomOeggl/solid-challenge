@@ -1,9 +1,10 @@
 export default class Reader {
-  constructor(input){
-    this.cache = [input];
+  constructor(){
+    this.cache = [];
   }
 
-  formatInputBlock(){
+  formatInputBlock(input){
+      this.cache[0] = input;
       if(this.isArray()){
         this.transformToString();
       }
