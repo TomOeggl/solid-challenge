@@ -1,4 +1,4 @@
-module.exports =  testData = [
+const testData = [
     {
       '1': 12340823051203,
       foo: true,
@@ -22,3 +22,6 @@ module.exports =  testData = [
     ],
     '--foo --bar baz secondstring --number 1 --1 12340823051203 --wrong abedof'
   ];
+
+export default  testData;
+  
