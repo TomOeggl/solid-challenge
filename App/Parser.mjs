@@ -17,7 +17,6 @@ export default class Parser {
         pair[1] = this.isMissingValue(pair[1][0]);
       }
       ensuredPairArray.push(pair);
-      console.log(pair);
     });
     return ensuredPairArray;
   }
