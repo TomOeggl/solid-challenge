@@ -13,10 +13,18 @@ export default class Writer {
     input.forEach(pair => {
       let prefix = '-';
       let key = '';
-      let value = pair[1] + '\n';
+      let value = '';
+
+      if (Array.isArray(pair[1])) {
+        pair[1].forEach(element => {
+          value += element + '\n';
+        });
+      } else {
+        value = pair[1] + '\n';
+      }
       key = prefix + pair[0] + ':\n';
       string += key + value;
     });
-    console.log(string);
+    return string;
   }
 }
