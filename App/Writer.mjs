@@ -8,4 +8,16 @@ export default class Writer{
         return jsonObject;
     }
 
+    writePairsToString(input){
+        let string = '';
+        input.forEach(pair => {
+            let prefix = '-';
+            let key = '';
+            let value = pair[1] + '\n';
+            key = prefix + pair[0] + '\n';
+            string += key + value;    
+        });
+        console.log(string);
+    }
+
 }
