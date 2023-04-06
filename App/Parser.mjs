@@ -2,14 +2,14 @@ export default class Parser {
   checkForMissingValues(input) {
     let ensuredPairArray = [];
     input.forEach(pair => {
-      pair[1] = this.isCompositeString(pair[1]);
+      pair[1] = this.splitToSubArray(pair[1]);
 
       if (pair[1].length > 1) {
         let compositeValue = [];
 
-        pair[1].forEach(value => {
-          value = this.isInt(value);
-          compositeValue.push(value);
+        pair[1].forEach(element => {
+          element = this.isInt(element);
+          compositeValue.push(element);
         });
         pair[1] = compositeValue;
       } else {
@@ -38,7 +38,7 @@ export default class Parser {
     }
   }
 
-  isCompositeString(value) {
+  splitToSubArray(value) {
     let valueArray = value.split(' ');
     if (valueArray.length > 1) {
       valueArray = valueArray.filter(str => str !== '');
