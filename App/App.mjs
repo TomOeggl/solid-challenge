@@ -9,7 +9,7 @@ export default class App {
 
   run() {
     this.cache.unshift(this.reader.formatInputBlock(this.cache[0]));
-    this.cache.unshift(this.parser.checkForMissingValues(this.cache[0]));
+    this.cache.unshift(this.parser.parseArray(this.cache[0]));
     this.cache.unshift(this.writer.writePairsToString(this.cache[0]));
     this.cache.unshift(this.writer.writePairsToObject(this.cache[1]));
     this.result.outputString = this.cache[0];
