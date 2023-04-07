@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+ app:
+    image: webdevops/php-nginx:8.1
+    volumes:
+      - .:/var/www
+      - ./default.conf:/opt/docker/etc/nginx/main.conf
+    ports:
+      - "8084:80"
+    working_dir: /var/www
+    hostname: php-project.localhost
