@@ -14,17 +14,22 @@ export default class Writer {
       let prefix = '-';
       let key = '';
       let value = '';
-
-      if (Array.isArray(pair[1])) {
-        pair[1].forEach(element => {
-          value += element + '\n';
-        });
-      } else {
-        value = pair[1] + '\n';
-      }
+      value += this.listingSubElements(pair[1]);
       key = prefix + pair[0] + ':\n';
       string += key + value;
     });
     return string;
+  }
+
+  listingSubElements(pairValue) {
+    let result = '';
+    if (Array.isArray(pairValue)) {
+      pairValue.forEach(element => {
+        result += element + '\n';
+      });
+    } else {
+      result += pairValue + '\n';
+    }
+    return result;
   }
 }
