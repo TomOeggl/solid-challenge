@@ -10,7 +10,7 @@ class ArgsWriter {
                         $json[$key] = true;
                     }
                 } else {
-                    print_r("nothitng");
+                    
                     $json[$key] = (string) $value;
                 }
             }
