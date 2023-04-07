@@ -12,4 +12,5 @@
     //echo 'Original argument string: '.$argString.'<br>';
     echo 'JSON representation: '.$json.'<br>';
    // echo 'Argument string from JSON: '.$argString2.'<br>';
+   echo $args;
 ?>
