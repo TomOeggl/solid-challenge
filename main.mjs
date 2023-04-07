@@ -9,10 +9,25 @@ let reader = new Reader();
 let parser = new Parser();
 let writer = new Writer();
 
-let input =
-  '--foo --bar baz second string --number 1 --1 1234 0823 051 203 --wrong abedof';
-// let input = ['--foo', '--bar', 'baz', '--number 1 35 --marko 1234 --over '];
-//let input = [["--foo","--bar"],[ "baz", "--number 1"]];
+let input;
+// input =
+//   '--foo --bar baz second string --number 1 --1 12340 8230 51 203 --wrong abedof';
+//  input = [
+//   '--foo',
+//   '--bar',
+//   'baz',
+//   '--number',
+//   '1',
+//   '35',
+//   '--marko',
+//   '1234',
+//   '--over ',
+// ];
+//  input = [
+//   ['--foo', '--bar'],
+//   ['baz', '--number 1'],
+// ];
+input = '--foo bar baz something --numbers 1 100 3 4 6 --flag value1 value2';
 
 //console.log(testData);
 

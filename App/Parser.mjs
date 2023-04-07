@@ -1,24 +1,36 @@
 export default class Parser {
-  checkForMissingValues(input) {
-    let ensuredPairArray = [];
+  parseArray(input) {
+    let ensuredPairArray = this.createCompositeArray(input);
+    return ensuredPairArray;
+  }
+
+  createCompositeArray(input) {
+    let newArray = [];
     input.forEach(pair => {
       pair[1] = this.splitToSubArray(pair[1]);
-
-      if (pair[1].length > 1) {
-        let compositeValue = [];
-
-        pair[1].forEach(element => {
-          element = this.isInt(element);
-          compositeValue.push(element);
-        });
-        pair[1] = compositeValue;
-      } else {
-        pair[1] = this.isInt(pair[1]);
-        pair[1] = this.isMissingValue(pair[1][0]);
-      }
-      ensuredPairArray.push(pair);
+      this.checkCompositeArray(pair);
+      newArray.push(pair);
     });
-    return ensuredPairArray;
+    return newArray;
+  }
+
+  checkCompositeArray(pair) {
+    if (pair[1].length > 1) {
+      pair[1] = this.postCompositeValueToArray(pair[1]);
+    } else {
+      pair[1] = this.isInt(pair[1]);
+      pair[1] = this.isMissingValue(pair[1][0]);
+    }
+    return pair;
+  }
+
+  postCompositeValueToArray(value) {
+    const compositeValue = [];
+    value.forEach(element => {
+      element = this.isInt(element);
+      compositeValue.push(element);
+    });
+    return compositeValue;
   }
 
   isInt(value) {
