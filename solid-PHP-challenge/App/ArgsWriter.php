@@ -10,6 +10,7 @@ class ArgsWriter {
                         $json[$key] = true;
                     }
                 } else {
+                    
                     $json[$key] = (string) $value;
                 }
             }
