@@ -1,39 +1,40 @@
 export default class Parser {
+
   parseArray(input) {
-    let ensuredPairArray = this.createCompositeArray(input);
-    return ensuredPairArray;
-  }
-
-  createCompositeArray(input) {
-    let newArray = [];
-    input.forEach(pair => {
-      pair[1] = this.splitToSubArray(pair[1]);
-      this.checkCompositeArray(pair);
-      newArray.push(pair);
+    let parsedArray = [];
+    let value = 1;
+    input.forEach((pair) => {
+      pair[value] = this.splitToSubArray(pair[value]);
+      if (this.isCompositeValue(pair[value])) {
+        pair[value] = this.applyCompositeValueRules(pair[value]);
+      } else {
+        pair[value] = this.applySingleValueRules(pair[value]);
+      }
+      parsedArray.push(pair);
     });
-    return newArray;
+    return parsedArray;
   }
 
-  checkCompositeArray(pair) {
-    if (pair[1].length > 1) {
-      pair[1] = this.postCompositeValueToArray(pair[1]);
-    } else {
-      pair[1] = this.isInt(pair[1]);
-      pair[1] = this.isMissingValue(pair[1][0]);
-    }
-    return pair;
+  isCompositeValue(value) {
+    return value.length > 1;
   }
 
-  postCompositeValueToArray(value) {
+  applyCompositeValueRules(value) {
     const compositeValue = [];
-    value.forEach(element => {
-      element = this.isInt(element);
+    value.forEach((element) => {
+      element = this.tryParseInt(element);
       compositeValue.push(element);
     });
     return compositeValue;
   }
 
-  isInt(value) {
+  applySingleValueRules(value) {
+    value = this.tryParseInt(value);
+    value = this.fillEmptyValue(value[0]);
+    return value;
+  }
+
+  tryParseInt(value) {
     let tryInt = parseInt(value);
     if (!isNaN(tryInt)) {
       return tryInt;
@@ -42,8 +43,8 @@ export default class Parser {
     }
   }
 
-  isMissingValue(value) {
-    if (value === '' || value === undefined) {
+  fillEmptyValue(value) {
+    if (value === "" || value === undefined) {
       return true;
     } else {
       return value;
@@ -51,9 +52,9 @@ export default class Parser {
   }
 
   splitToSubArray(value) {
-    let valueArray = value.split(' ');
+    let valueArray = value.split(" ");
     if (valueArray.length > 1) {
-      valueArray = valueArray.filter(str => str !== '');
+      valueArray = valueArray.filter((str) => str !== "");
     }
     return valueArray;
   }
