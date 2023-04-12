@@ -27,7 +27,7 @@ let input;
 //   ['--foo', '--bar'],
 //   ['baz', '--number 1'],
 // ];
-input = '--foo bar baz something --numbers 1 100 3 4 6 --flag value1 value2';
+input = '--foo bar baz something --numbers 1 100 3 4 6 --flag value1 value2 --empty';
 
 //console.log(testData);
 
