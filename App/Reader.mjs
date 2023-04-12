@@ -30,12 +30,12 @@ export default class Reader {
   
   splitSubstringAtSpaces() {
     let noSpaceSplitInput = [];
-    for (let i = 0; i < this.cache[0].length; i++) {
-      let key = this.cache[0][i].split(" ").splice(0,1);
-      let value = this.cache[0][i].split(" ").splice(1).join(" ");
+    this.cache[0].forEach((keyValueCombo) => {
+      let key = keyValueCombo.split(" ").splice(0,1);
+      let value = keyValueCombo.split(" ").splice(1).join(" ");
       let keyValuePair = [key, value];
       noSpaceSplitInput.push(keyValuePair);
-    }
+    });
     this.cache.unshift(noSpaceSplitInput);
   }
 
